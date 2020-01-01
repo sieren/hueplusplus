@@ -105,13 +105,13 @@ const std::map<std::string, std::string>& HueFinder::GetAllUsernames() const
 Hue::Hue(const std::string& ip, const std::string& username, std::shared_ptr<const IHttpHandler> handler)
     : ip(ip),
     username(username),
-    http_handler(std::move(handler)),
-    commands(ip, username, http_handler),
     simpleBrightnessStrategy(std::make_shared<SimpleBrightnessStrategy>()),
     simpleColorHueStrategy(std::make_shared<SimpleColorHueStrategy>()),
     extendedColorHueStrategy(std::make_shared<ExtendedColorHueStrategy>()),
     simpleColorTemperatureStrategy(std::make_shared<SimpleColorTemperatureStrategy>()),
-    extendedColorTemperatureStrategy(std::make_shared<ExtendedColorTemperatureStrategy>())
+    extendedColorTemperatureStrategy(std::make_shared<ExtendedColorTemperatureStrategy>()),
+    http_handler(std::move(handler)),
+    commands(ip, username, http_handler)
 {}
 
 std::string Hue::getBridgeIP()
